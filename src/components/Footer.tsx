@@ -176,6 +176,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </button>
           </div>
         </div>
+
+        {/* Creator Attribution */}
+        <div className="mt-8 pt-6 border-t border-slate-850 dark:border-slate-850/60 light:border-slate-200/80 text-center">
+          <p className="text-xs sm:text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700">
+            This website is made by{' '}
+            <span className="text-cyan-400 font-semibold">Aryan yadav</span>
+            , a Student of{' '}
+            <span className="text-blue-400 font-semibold">Scale Carrer Institute</span>.
+          </p>
+        </div>
       </div>
     </footer>
   );
