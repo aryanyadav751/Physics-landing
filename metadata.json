@@ -1,0 +1,6 @@
+{
+  "name": "Physics Lab 10",
+  "description": "Understand Physics. Visualize Concepts. Master CBSE Class 10 Physics with interactive virtual experiments, ray simulations, formula hubs, question banks, and AI tutoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
