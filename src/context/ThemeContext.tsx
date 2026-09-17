@@ -11,26 +11,41 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<ThemeMode>(() => {
-    const saved = localStorage.getItem('physics_lab_theme');
-    if (saved === 'light' || saved === 'dark') return saved;
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('physics_lab_theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+    }
     return 'dark'; // default to sci-fi dark scientific mode
   });
 
   useEffect(() => {
-    localStorage.setItem('physics_lab_theme', theme);
+    try {
+      localStorage.setItem('physics_lab_theme', theme);
+    } catch {
+      // ignore storage errors
+    }
+
+    const root = document.documentElement;
     if (theme === 'light') {
-      document.documentElement.classList.add('light-theme');
+      root.classList.remove('dark');
+      root.classList.add('light', 'light-theme');
+      root.setAttribute('data-theme', 'light');
       document.body.classList.remove('bg-slate-950', 'text-slate-100');
       document.body.classList.add('bg-slate-50', 'text-slate-900');
     } else {
-      document.documentElement.classList.remove('light-theme');
+      root.classList.remove('light', 'light-theme');
+      root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
       document.body.classList.remove('bg-slate-50', 'text-slate-900');
       document.body.classList.add('bg-slate-950', 'text-slate-100');
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    setThemeState(prev => (prev === 'dark' ? 'light' : 'dark'));
+    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   const setTheme = (newTheme: ThemeMode) => {

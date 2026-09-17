@@ -66,6 +66,16 @@ export default function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen flex flex-col font-sans transition-colors duration-300">
+        {/* Top Attribution Banner */}
+        <div
+          id="top-creator-announcement"
+          className="w-full bg-slate-900/95 dark:bg-slate-950 light:bg-slate-100 border-b border-cyan-500/30 dark:border-cyan-500/30 light:border-slate-300 py-2.5 px-4 text-center z-50 transition-colors shadow-sm"
+        >
+          <p className="max-w-7xl mx-auto text-xs sm:text-sm font-bold text-slate-100 dark:text-white light:text-slate-900 tracking-wide">
+            <strong>This website is made by Aryan yadav, a Student of Scale Carrer Institute</strong>
+          </p>
+        </div>
+
         {/* Sticky Translucent Navbar */}
         <Navbar
           activeRoute={currentRoute}

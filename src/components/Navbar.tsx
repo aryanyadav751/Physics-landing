@@ -168,10 +168,30 @@ export const Navbar: React.FC<NavbarProps> = ({ activeRoute, onNavigate, onOpenS
               )}
             </button>
           ))}
+          {/* Mobile Theme Toggle */}
           <div className="pt-2 border-t border-slate-800 dark:border-slate-800 light:border-slate-200">
             <button
+              onClick={toggleTheme}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium bg-slate-900/60 dark:bg-slate-900 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 text-slate-200 dark:text-slate-200 light:text-slate-800 cursor-pointer"
+            >
+              <div className="flex items-center gap-2">
+                {theme === 'dark' ? (
+                  <Sun className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <Moon className="w-4 h-4 text-slate-700" />
+                )}
+                <span>Appearance Mode</span>
+              </div>
+              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 uppercase">
+                {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+              </span>
+            </button>
+          </div>
+
+          <div className="pt-1">
+            <button
               onClick={() => handleNavClick('/chapters')}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
               <span>Start Learning Class 10</span>
